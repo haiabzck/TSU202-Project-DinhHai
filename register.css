@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.signup-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #111;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+}
+
+.name-row {
+    display: flex;
+    gap: 15px;
+}
+
+.name-row .input-group {
+    flex: 1;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.checkbox-group a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.btn-signup {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.btn-signup:hover {
+    background-color: #0056b3;
+}
+
+.footer-text {
+    font-size: 14px;
+}
+
+.footer-text a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.error{
+    color: red;
+}
+@media screen and (max-width: 768px) {
+
+body{
+    display: block;
+  }
+.signup-container{
+    max-width: none;
+    padding: 64px 16px 25px;
+}
+.name-row{
+    display: block;
+}
+}

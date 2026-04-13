@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Danh mục</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./category.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-fire"></i> Ecommerce
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-house"></i> Thống kê</a></li>
+                    <li class="active"><a href="#"><i class="fa-solid fa-list"></i> Danh mục</a></li>
+                    <li><a href="#"><i class="fa-solid fa-box"></i> Sản phẩm</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header>
+                <div class="header-right">
+                    <i class="fa-regular fa-bell"></i>
+                    <img src="./img/admin.png" alt="Avatar" class="avatar">
+                </div>
+            </header>
+            <section class="content-body">
+                <div class="title-bar">
+                    <h2>Danh mục</h2>
+                    <button class="btn-add">Thêm mới danh mục</button>
+                </div>
+
+                <div class="filter-bar">
+                    <select>
+                        <option>Tất cả</option>
+                        <option>Đang hoạt động</option>
+                        <option>Ngừng hoạt động</option>
+                    </select>
+                    <div class="search-box">
+                        <input type="text" placeholder="Tìm kiếm danh mục theo tên">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mã danh mục <i class="fa-solid fa-arrow-down"></i></th>
+                            <th>Tên danh mục <i class="fa-solid fa-arrow-down"></i></th>
+                            <th>Trạng thái</th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>DM001</td>
+                            <td>Quần áo</td>
+                            <td><span class="status active">● Đang hoạt động</span></td>
+                            <td class="actions">
+                                <i class="fa-solid fa-trash-can delete"></i>
+                                <i class="fa-solid fa-pencil edit"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>DM002</td>
+                            <td>Kính mắt</td>
+                            <td><span class="status inactive">● Ngừng hoạt động</span></td>
+                            <td class="actions">
+                                <i class="fa-solid fa-trash-can delete"></i>
+                                <i class="fa-solid fa-pencil edit"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <button>&larr;</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button class="active">3</button>
+                    <button>4</button>
+                    <button>...</button>
+                    <button>20</button>
+                    <button>&rarr;</button>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
