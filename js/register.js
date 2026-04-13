@@ -1,29 +1,69 @@
 
+let formRegister = document.getElementById("form-register");
+let users = JSON.parse(localStorage.getItem('users')) || [];
 let email = document.getElementById("email");
 let password = document.getElementById("password");
-let form = document.getElementById("form-register");
-let firstName = document.getElementById("firstname");
-let lastName = document.getElementById("lastname");
-let users = JSON.parse(localStorage.getItem('users')) || [];
 let errorfirstName = document.querySelector('.error-firstname');
 let errorlastName = document.querySelector('.error-lastname');
 let errorEmail = document.querySelector('.error-email');
 let errorPassword = document.querySelector('.error-password');
 let errorConfirmPassword = document.querySelector('.error-confirm-password');
 let checkbox = document.getElementById('terms');
-form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        if (validateData(form)) {
-        let newUser = {
-        id: Math.floor(Math.random() * 10000),
-        email: form.email.value.trim(),
-        password: form.password.value.trim(),
-        };
-        users.push(newUser);
-        localStorage.setItem('users', JSON.stringify(users));
-        location.href = "login.html";
+
+
+
+formRegister.addEventListener("submit", function(event) {
+    event.preventDefault();
+    let emailInput = email.value.trim(); 
+    let passwordInput = password.value.trim(); 
+
+    let checkEmail = users.some(function(u) {
+        return u.email === emailInput;
+    });
+
+    if (checkEmail == true) {
+        alert("Email trung, khong dang ky duoc!");
+        return;
     }
+    if (validateData(formRegister)) {
+        let newUser = {
+          firstname: formRegister.firstname.value.trim(),
+          lastname : formRegister.lastname.value.trim(),
+          email: formRegister.email.value.trim(),
+          password: formRegister.password.value.trim(),
+          };
+        
+           users.push(newUser);
+
+          localStorage.setItem("users", JSON.stringify(users));
+          alert("Dang ky thanh cong!");
+          window.location.href = "./login.html";
+        }
 });
+
+
+// formRegister.addEventListener("submit", function (event) {
+//         event.preventDefault();
+//          let checkEmail= users.some(function(u){
+//          return u.email=formRegister.email.value.trim();
+//         });
+//         if(checkEmail== true){
+//           alert('Email bạn nhập đã có')
+//         }
+//         if (validateData(formRegister)) {
+//         let newUser = {
+//         id: Math.floor(Math.random() * 10000),
+//         firstname: formRegister.firstname.value.trim(),
+//         lastname : formRegister.lastname.value.trim(),
+//         email: formRegister.email.value.trim(),
+//         password: formRegister.password.value.trim(),
+//         };
+//         users.push(newUser);
+//         localStorage.setItem('users', JSON.stringify(users));
+//         alert('Đăng ký thành công');
+//         window.location.href = "./login.html";
+//     }
+// });
 
 function validateData(form) {
   let check = true;
