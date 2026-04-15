@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý Danh mục</title>
+    <title>Quản lý sản phẩm</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/category.css">
 </head>
@@ -59,9 +59,9 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#"><i class="fa-solid fa-house"></i> Thống kê</a></li>
-                    <li class="active"><a href="./category.html"><i class="fa-solid fa-list"></i> Danh mục</a></li>
-                    <li><a href="#"><i class="fa-solid fa-box"></i> Sản phẩm</a></li>
+                    <li><a href="./home.html"><i class="fa-solid fa-house"></i> Thống kê</a></li>
+                    <li><a href="./category.html"><i class="fa-solid fa-list"></i> Danh mục</a></li>
+                    <li class="active"><a href="./products.html"><i class="fa-solid fa-box"></i> Sản phẩm</a></li>
                 </ul>
             </nav>
         </aside>
@@ -79,13 +79,18 @@
             </header>
             <section class="content-body">
                 <div class="title-bar">
-                    <h2>Danh mục</h2>
-                    <button class="btn-add" id="show-modal">Thêm mới danh mục</button>
+                    <h2>Sản phẩm</h2>
+                    <button class="btn-add" id="show-modal">Thêm mới sản phẩm</button>
                 </div>
 
                 <div class="filter-bar">
                     <select id="filterSelect">
-                        <option value="all">Tất cả</option>
+                        <option value="all">Lọc theo danh mục</option>
+                        <option value="ACTIVE">Đang hoạt động</option>
+                        <option value="INACTIVE">Ngừng hoạt động</option>
+                    </select>
+                    <select id="filterSelect">
+                        <option value="all">Lọc theo trạng thái</option>
                         <option value="ACTIVE">Đang hoạt động</option>
                         <option value="INACTIVE">Ngừng hoạt động</option>
                     </select>
@@ -125,7 +130,7 @@
                     </tbody>
                 </table>
 
-                <div class="pagination" id="pagination">
+                <div class="pagination">
                     <button>&larr;</button>
                     <button>1</button>
                     <button>2</button>

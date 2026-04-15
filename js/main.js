@@ -12,6 +12,25 @@ if (!categories) {
 }
 localStorage.setItem("categories", JSON.stringify(categories));
 
+let boxLogout=document.querySelector(".avatar");
+let modalShow = document.querySelector('.dropdown-menu');
+boxLogout.addEventListener("click",() => {
+    modalShow.classList.toggle('box-logout');
+});
+//Logout
+let isLogin = JSON.parse(localStorage.getItem("isLogin"));
+if (!isLogin) {
+    window.location.href = "login.html";
+}
+
+let btnLogout = document.getElementById("btn-logout");
+btnLogout.addEventListener("click", () => {
+    if (confirm("Bạn chắc chắn muốn logout không")) {
+        localStorage.removeItem("isLogin");
+        window.location.href = "login.html";
+    }
+}); 
+
 let modal = document.getElementById('modal');
 let showModalBtn = document.getElementById('show-modal');
 let closeModalBtn = document.querySelector('.close-modal');
@@ -51,12 +70,20 @@ window.addEventListener('click', (e) => {
     (e.target === modal ? modal.classList.remove('show-modal') : false);
 });
 
-
+let currentPage = 1;
+const rowsPerPage = 1;
 // Render du lieu ra man hinh
 function renderCategories(arr) {
     let tableCategories = document.getElementById("table-categories");
+    const paginationWrapper = document.getElementById('pagination');
+     // 1. Tính toán vị trí bắt đầu và kết thúc
+    const startIndex = (currentPage - 1) * rowsPerPage;
+    const endIndex = startIndex + rowsPerPage;
+    
+    // 2. Cắt mảng dữ liệu để hiển thị trang hiện tại
+    const pageData = categories.slice(startIndex, endIndex);
     tableCategories.innerHTML = ""; // reset du lieu ben trong the
-    let newCategories = arr.map((c) => {
+    let newCategories = pageData.map((c) => {
         let newStatus ='';
         let newClass ='';
         //console.log(c.status == "ACTIVE");
@@ -81,10 +108,29 @@ function renderCategories(arr) {
     }).join("");
     // .join("")  chuyển mảng thành chuỗi
     tableCategories.innerHTML = newCategories;
+    renderPagination(categories.length, paginationWrapper);
 }
 renderCategories(categories);
 
+function renderPagination(totalItems, wrapper) {
+    wrapper.innerHTML = "";
+    const pageCount = Math.ceil(totalItems / rowsPerPage);
 
+    for (let i = 1; i <= pageCount; i++) {
+        const btn = document.createElement("button");
+        btn.innerText = i;
+        if (i === currentPage) {
+            btn.style.background = "#007bff";
+            btn.style.color = "white";
+        }
+
+        btn.onclick = function() {
+            currentPage = i;
+            renderCategories(categories);
+        };
+        wrapper.appendChild(btn);
+    }
+}
 
 function isProductcode(code) {
     return categories.some(p => 
@@ -290,24 +336,7 @@ filterSelect.addEventListener('change', function() {
   
 });
 
-let boxLogout=document.querySelector(".avatar");
-let modalShow = document.querySelector('.dropdown-menu');
-boxLogout.addEventListener("click",() => {
-    modalShow.classList.toggle('box-logout');
-});
-//Logout
-let isLogin = JSON.parse(localStorage.getItem("isLogin"));
-if (!isLogin) {
-    window.location.href = "login.html";
-}
 
-let btnLogout = document.getElementById("btn-logout");
-btnLogout.addEventListener("click", () => {
-    if (confirm("Bạn chắc chắn muốn logout không")) {
-        localStorage.removeItem("isLogin");
-        window.location.href = "login.html";
-    }
-});
 
 
 renderCategories(categories);
