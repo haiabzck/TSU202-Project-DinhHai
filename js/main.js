@@ -192,6 +192,10 @@ renderCategories(categories);
 
 // Xoa san pham
 function handleDelete(id) {
+        if (categories.length <= 1) {
+        alert("Cảnh báo: Phải có ít nhất 1 sản phẩm trong danh sách. Không được xóa!");
+        return; 
+    }
    let alertBox = document.createElement("div");
     alertBox.innerHTML = `<div class="modal-delete show-modal-delete " id="modal-delete">
                             <div class="confirm-modal">
@@ -236,10 +240,7 @@ function handleDelete(id) {
         successDelete.addEventListener('click',() => {
             modalDelete.classList.remove('show-modal-delete');
         });
-        if (products.length <= 1) {
-        alert("Cảnh báo: Phải có ít nhất 1 sản phẩm trong danh sách. Không được xóa!");
-        return; 
-    }
+    
         localStorage.setItem("categories", JSON.stringify(categories));
         renderCategories(categories);
     });
