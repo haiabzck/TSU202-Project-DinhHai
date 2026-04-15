@@ -15,7 +15,7 @@ let checkbox = document.getElementById('terms');
 formRegister.addEventListener("submit", function(event) {
     event.preventDefault();
     let emailInput = email.value.trim(); 
-    let passwordInput = password.value.trim(); 
+    //let passwordInput = password.value.trim(); 
 
     let checkEmail = users.some(function(u) {
         return u.email === emailInput;
@@ -41,29 +41,6 @@ formRegister.addEventListener("submit", function(event) {
         }
 });
 
-
-// formRegister.addEventListener("submit", function (event) {
-//         event.preventDefault();
-//          let checkEmail= users.some(function(u){
-//          return u.email=formRegister.email.value.trim();
-//         });
-//         if(checkEmail== true){
-//           alert('Email bạn nhập đã có')
-//         }
-//         if (validateData(formRegister)) {
-//         let newUser = {
-//         id: Math.floor(Math.random() * 10000),
-//         firstname: formRegister.firstname.value.trim(),
-//         lastname : formRegister.lastname.value.trim(),
-//         email: formRegister.email.value.trim(),
-//         password: formRegister.password.value.trim(),
-//         };
-//         users.push(newUser);
-//         localStorage.setItem('users', JSON.stringify(users));
-//         alert('Đăng ký thành công');
-//         window.location.href = "./login.html";
-//     }
-// });
 
 function validateData(form) {
   let check = true;
@@ -117,7 +94,7 @@ function validateData(form) {
   } else {
     errorConfirmPassword.innerText = '';
   }
-    if (!checkbox.checked) {
+  if (!checkbox.checked) {
     alert('Mời bạn tích xác nhận đăng ký');
     check = false;
   }else{

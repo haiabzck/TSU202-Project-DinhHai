@@ -9,45 +9,62 @@
 </head>
 <body>
     <div class="modal-overlay" id="modal"> 
-    <!-- Nội dung Modal -->
-    <div class="modal-box">
-        <div class="modal-header">
-            <h3>Thêm mới danh mục</h3>
-            <button class="close-btn" id="close-modal">&times;</button>
-        </div>
-
-        <div class="modal-body">
-            <div class="form-group">
-                <label>Mã danh mục <span class="required">*</span></label>
-                <input type="text" placeholder="">
+    <form action="" id="form-addProduct">
+        <input type="hidden" name="courseId" />
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Thêm mới danh mục</h3>
+                <p class="close-btn close-modal" id="">&times;</p>
             </div>
+            
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã danh mục <span class="required">*</span></label>
+                    <input type="text" id="product-code" name="productCode" placeholder="">
+                    <small class="error error-id"></small>
+                </div>
 
-            <div class="form-group">
-                <label>Tên danh mục <span class="required">*</span></label>
-                <input type="text" placeholder="">
-            </div>
+                <div class="form-group">
+                    <label>Tên danh mục <span class="required">*</span></label>
+                    <input type="text" id="product-name" name="productName" placeholder="">
+                    <small class="error error-name"></small>
+                </div>
 
-            <div class="form-group">
-                <label>Trạng thái</label>
-                <div class="radio-group">
-                    <label class="radio-item">
-                        <input type="radio" name="status" checked>
-                        <span>Đang hoạt động</span>
-                    </label>
-                    <label class="radio-item">
-                        <input type="radio" name="status">
-                        <span>Ngừng hoạt động</span>
-                    </label>
+                <div class="form-group">
+                    <label>Trạng thái</label>
+                    <div class="radio-group">
+                        <label class="radio-item">
+                            <input type="radio" id="active" name="status" value="ACTIVE" checked>
+                            <span>Đang hoạt động</span>
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" id="inactive" name="status" value="INACTIVE">
+                            <span>Ngừng hoạt động</span>
+                        </label>
+                    </div>
                 </div>
             </div>
+            
+            <div class="modal-footer">
+                <button class="btn-cancel" id="close-modal" type="button">Hủy</button>
+                <button class="btn-submit" type="submit">Thêm</button>
+            </div>
         </div>
-
-        <div class="modal-footer">
-            <button class="btn-cancel" id="close-modal">Hủy</button>
-            <button class="btn-submit" >Thêm</button>
+    </form>
+</div>
+<!-- <div class="modal-delete " id="modal-delete">
+    <div class="confirm-modal">
+        <div class="icon-warning">
+            <i class="fa-solid fa-circle-exclamation"></i>
+        </div>
+        <h3>Xác nhận</h3>
+        <p>Bạn có chắc chắn muốn xóa sản phẩm <strong>Táo đỏ</strong> khỏi hệ thống không?</p>
+        <div class="modal-actions">
+            <button class="btn-cancel" id="cance-delete">Hủy</button>
+            <button class="btn-delete">Xóa</button>
         </div>
     </div>
-</div>
+</div> -->
     <div class="container">
         <aside class="sidebar">
             <div class="logo">
@@ -66,6 +83,11 @@
                 <div class="header-right">
                     <i class="fa-regular fa-bell"></i>
                     <img src="../img/admin.png" alt="Avatar" class="avatar">
+                    <div class="dropdown-menu">
+                        <a href="#" class="logout-link" id="btn-logout">
+                            <i class="fa-solid fa-right-from-bracket"></i> Log out
+                        </a>
+                    </div>
                 </div>
             </header>
             <section class="content-body">
@@ -75,17 +97,17 @@
                 </div>
 
                 <div class="filter-bar">
-                    <select>
-                        <option>Tất cả</option>
-                        <option>Đang hoạt động</option>
-                        <option>Ngừng hoạt động</option>
+                    <select id="filterSelect">
+                        <option value="all">Tất cả</option>
+                        <option value="ACTIVE">Đang hoạt động</option>
+                        <option value="INACTIVE">Ngừng hoạt động</option>
                     </select>
                     <div class="search-box">
-                        <input type="text" placeholder="Tìm kiếm danh mục theo tên">
+                        <input type="text" id="input-search" placeholder="Tìm kiếm danh mục theo tên">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                 </div>
-                <table class="data-table" id="table-categoris">
+                <table class="data-table" >
                     <thead>
                         <tr>
                             <th>Mã danh mục <i class="fa-solid fa-arrow-down"></i></th>
@@ -94,7 +116,7 @@
                             <th>Chức năng</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table-categories">
                         <tr>
                             <td>DM001</td>
                             <td>Quần áo</td>
