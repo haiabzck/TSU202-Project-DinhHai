@@ -1,16 +1,31 @@
 // Tạo dữ liệu mẫu khi chưa có danh mục
-let categories = JSON.parse(localStorage.getItem("categories")); // null
+let products = JSON.parse(localStorage.getItem("products")); // null
 let formAddProduct = document.getElementById("form-addProduct");
-if (!categories) {
-    categories = [
-        { id:1 ,productCode: "DM001", productName: "Quần Áo", status: "ACTIVE", img: "../img/anh1.png" },
-        { id:2 ,productCode: "DM002", productName: "Kính mắt", status: "ACTIVE", img: "../img/anh2.png" },
-        { id:3 ,productCode: "DM003", productName: "Điện tử", status: "INACTIVE", img: "../img/anh3.png" },
-        { id:4 ,productCode: "DM004", productName: "Hoa quả", status: "ACTIVE", img: "../img/anh4.png" },
-        { id:5 ,productCode: "DM005", productName: "Giày dép", status: "INACTIVE", img: "../img/anh1.png" },
-    ];
+if (!products) {
+     products = [
+    { id: 1, productCode : "SP001" ,productName: "iPhone 15 Pro Max", price: "28.000.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 2, productCode : "SP002" ,productName: "Samsung Galaxy S24 Ultra", price: "26.500.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 3, productCode : "SP003" ,productName: "MacBook Air M3", price: "27.990.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 4, productCode : "SP004" ,productName: "Sony WH-1000XM5", price: "6.500.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 5, productCode : "SP005" ,productName: "Apple Watch Series 9", price: "9.200.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 6, productCode : "SP006" ,productName: "Bàn phím cơ Keychron K2", price: "1.800.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 7, productCode : "SP007" ,productName: "Chuột Logitech MX Master 3S", price: "2.300.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 8, productCode : "SP008" ,productName: "Màn hình Dell Ultrasharp", price: "8.500.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 9, productCode : "SP009" ,productName: "iPad Pro M2", price: "21.000.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 10,productCode : "SP010" , productName: "Loa Marshall Emberton II", price: "3.200.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 11,productCode : "SP011" , productName: "Máy ảnh Fujifilm X-T5", price: "42.000.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 12,productCode : "SP012" , productName: "Tai nghe Airpods Pro 2", price: "5.500.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 13,productCode : "SP013" , productName: "Sạc dự phòng Anker 20000mAh", price: "1.200.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 14,productCode : "SP014" , productName: "Đồng hồ Garmin Fenix 7", price: "15.000.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 15,productCode : "SP015" , productName: "Tay cầm PS5 DualSense", price: "1.600.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 16,productCode : "SP016" , productName: "Ổ cứng SSD Samsung 1TB", price: "2.500.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 17,productCode : "SP017" , productName: "Bút Apple Pencil 2", price: "2.800.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 18,productCode : "SP018" , productName: "Loa Bluetooth JBL Flip 6", price: "2.400.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 19,productCode : "SP019" , productName: "Microphone Blue Yeti", price: "3.500.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""},
+    { id: 20,productCode : "SP020" , productName: "Đèn bàn học chống cận", price: "500.000đ" ,quantity :100,discount:0,image:"",status : "ACTIVE",ctaegory_id: 1,desc:"",create_at:""}
+];
 }
-localStorage.setItem("categories", JSON.stringify(categories));
+localStorage.setItem("products", JSON.stringify(products));
 
 let boxLogout=document.querySelector(".avatar");
 let modalShow = document.querySelector('.dropdown-menu');
@@ -82,11 +97,11 @@ sortName.addEventListener('click', function() {
         document.getElementById('sortIcon').innerHTML = '<i class="fa-solid fa-arrow-down">';
     }
     currentPage = 1; // Luôn reset về trang 1 khi sắp xếp
-    renderCategories(categories);
+    renderCategories(products);
 }); 
 
 let currentPage = 1;
-let rowsPerPage = 2;
+let rowsPerPage = 10;
 // Render du lieu ra man hinh
 function renderCategories(arr) {
     let tableCategories = document.getElementById("table-categories");
@@ -123,6 +138,9 @@ function renderCategories(arr) {
             <tr>
                 <td>${c.productCode}</td>
                 <td>${c.productName}</td>
+                <td>${c.price}</td>
+                <td>${c.quantity}</td>
+                <td>${c.discount}</td>
                 <td><span class="status ${newClass}" data-category="${c.status}">● ${newStatus}</span></td>
                 <td class="actions">
                     <button onclick="handleDelete(${c.id})" value="${c.id}" ><i class="fa-solid fa-trash-can delete"></i></button>
@@ -136,7 +154,7 @@ function renderCategories(arr) {
     renderPagination(arr.length,arr);
 }
 
-renderCategories(categories);
+renderCategories(products);
 
 function renderPagination(totalItems,newArr) {
     let paginationWrapper = document.getElementById('pagination');
@@ -160,7 +178,7 @@ function renderPagination(totalItems,newArr) {
         paginationWrapper.appendChild(btn);
     }
 }
-renderCategories(categories);
+renderCategories(products);
 
 // Them, sua san pham
 formAddProduct.addEventListener("submit", (event) => {
@@ -168,10 +186,10 @@ formAddProduct.addEventListener("submit", (event) => {
     let productCodeInput = formAddProduct.productCode.value.trim();
     let productNameInput = formAddProduct.productName.value.trim();
     let id = Number(formAddProduct.courseId.value);
-    let checkCode = categories.some((c) => {
+    let checkCode = products.some((c) => {
         return c.productCode.toLowerCase() === productCodeInput.toLowerCase() && c.id !== id;
         });
-    let checkName = categories.some((c) => {
+    let checkName = products.some((c) => {
         return c.productName.toLowerCase() === productNameInput.toLowerCase() && c.id !== id;
         });
 
@@ -186,22 +204,22 @@ formAddProduct.addEventListener("submit", (event) => {
             return;
         } 
     if (id) {  
-        let index = categories.findIndex((el) => el.id === id);
-        categories[index].productCode = productCodeInput;
-        categories[index].productName = productNameInput;
-        categories[index].status = formAddProduct.status.value;
-        localStorage.setItem("categories", JSON.stringify(categories));
+        let index = products.findIndex((el) => el.id === id);
+        products[index].productCode = productCodeInput;
+        products[index].productName = productNameInput;
+        products[index].status = formAddProduct.status.value;
+        localStorage.setItem("products", JSON.stringify(products));
         modal.classList.remove('show-modal');
-        renderCategories(categories);
+        renderCategories(products);
         alert("Cập nhật thành công");
         formAddProduct.courseId.value = ''; 
 
   } else {
     if (validateData(formAddProduct)) {
-        let checkCode = categories.some((c) => {
+        let checkCode = products.some((c) => {
         return c.productCode.toLowerCase() === productCodeInput.toLowerCase();
         });
-        let checkName = categories.some((c) => {
+        let checkName = products.some((c) => {
         return c.productName.toLowerCase() === productNameInput.toLowerCase();
         });
 
@@ -222,16 +240,16 @@ formAddProduct.addEventListener("submit", (event) => {
             status: formAddProduct.status.value
         }
         
-        categories.push(newCategory);
-        localStorage.setItem("categories", JSON.stringify(categories));
+        products.push(newCategory);
+        localStorage.setItem("products", JSON.stringify(products));
         modal.classList.remove('show-modal');
-        currentPage = Math.ceil(categories.length / rowsPerPage);
-        renderCategories(categories);
+        currentPage = Math.ceil(products.length / rowsPerPage);
+        renderCategories(products);
         alert("Thêm mới thành công");
     }
   }
 });
-renderCategories(categories);
+renderCategories(products);
 
 function validateData(form) {
   let check = true;
@@ -255,7 +273,7 @@ function validateData(form) {
 }  
 
 function showEdit(id) {
-  let edit = categories.find((el) => el.id === id);
+  let edit = products.find((el) => el.id === id);
   if (edit) {
     // fill dữ liệu vào form
     formAddProduct.courseId.value = edit.id;
@@ -270,7 +288,7 @@ function showEdit(id) {
 }
 // Xoa san pham
 function handleDelete(id) {
-    if (categories.length <= 1) {
+    if (products.length <= 1) {
         alert("Phải có ít nhất 1 sản phẩm trong danh sách. Không được xóa!");
         return; 
     }
@@ -297,7 +315,7 @@ function handleDelete(id) {
     });
     let isDelete = document.getElementById('delete');
     isDelete.addEventListener('click',() => {
-        categories = categories.filter((c) => {
+        products = products.filter((c) => {
         return c.id !== id;
         });
         modalDelete.innerHTML = `<div class="toast-success">
@@ -319,9 +337,9 @@ function handleDelete(id) {
             modalDelete.classList.remove('show-modal-delete');
         });
     
-        localStorage.setItem("categories", JSON.stringify(categories));
-        currentPage = Math.ceil(categories.length / rowsPerPage);
-        renderCategories(categories);
+        localStorage.setItem("products", JSON.stringify(products));
+        currentPage = Math.ceil(products.length / rowsPerPage);
+        renderCategories(products);
     });
 }
 
@@ -330,7 +348,7 @@ function handleDelete(id) {
 let inputSearch = document.getElementById("input-search");
 inputSearch.addEventListener("input", (event) => {
     let value = inputSearch.value.trim().toLowerCase();
-    let newArr = categories.filter((c) => {
+    let newArr = products.filter((c) => {
         return c.productName.toLowerCase().includes(value);
     });
     console.log(newArr);
@@ -344,9 +362,9 @@ let filterSelect = document.getElementById('filterSelect');
 filterSelect.addEventListener('change', function() {
     let selectedValue = this.value;
     if(selectedValue==="all"){
-            renderCategories(categories);
+            renderCategories(products);
     }else{
-        let filtered = categories.filter((p) => {
+        let filtered = products.filter((p) => {
         
         return p.status===selectedValue;
         
@@ -358,5 +376,5 @@ filterSelect.addEventListener('change', function() {
   
 });
 
-renderCategories(categories);
+renderCategories(products);
 

@@ -93,7 +93,6 @@ body {
     background-color: #f6f6f6;
 }
 
-/* Header: Tiêu đề và Nút */
 .category-header {
     display: flex;
     justify-content: space-between;
@@ -110,7 +109,6 @@ body {
     color: #333;
 }
 
-/* Grid danh mục */
 .new-arrival{
     padding-top: 56px;
 }
@@ -122,9 +120,9 @@ body {
 
 .cat-card {
     flex: 1;
-    background-color: #EDEDED; /* Màu xám nhạt giống ảnh */
+    background-color: #EDEDED; 
     padding: 52px 47px;
-    border-radius: 15px; /* Bo góc đặc trưng */
+    border-radius: 15px; 
     text-align: center;
     font-weight: 500;
     font-size: 16px;
@@ -132,7 +130,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Hiệu ứng khi di chuột */
 .cat-card:hover {
     background-color: #e0e0e0;
     transform: translateY(-5px);
@@ -140,7 +137,7 @@ body {
 
 /* banner */
 .hero-banner {
-    background-color: #211C24; /* Màu tím đen đặc trưng */
+    background-color: #211C24;
     height: 600px;
     display: flex;
     align-items: center;
@@ -149,7 +146,7 @@ body {
     color: white;
     overflow: hidden;
 }
-
+.carousel-inner 
 .hero-content {
     max-width: 500px;
 }
@@ -165,8 +162,8 @@ body {
     font-weight: 300;
     margin-bottom: 15px;
     letter-spacing: -2px;
+    color: white;
 }
-
 .hero-content h1 span {
     font-weight: 700;
 }
@@ -183,7 +180,6 @@ body {
     font-size: 16px;
 }
 
-/* Nút bấm viền mảnh */
 .btn-outline {
     background: transparent;
     border: 1px solid white;
@@ -200,7 +196,6 @@ body {
     color: #211C24;
 }
 
-/* Hiệu ứng hình ảnh */
 .hero-image{
     width: 33%;
     position: relative;

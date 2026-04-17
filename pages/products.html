@@ -102,8 +102,11 @@
                 <table class="data-table" >
                     <thead>
                         <tr>
-                            <th>Mã danh mục <i class="fa-solid fa-arrow-down"></i></th>
-                            <th>Tên danh mục <i class="fa-solid fa-arrow-down"></i></th>
+                            <th>Mã sản phẩm <i class="fa-solid fa-arrow-down"></i></th>
+                            <th id="sortByName">Tên sản phẩm <i class="fa-solid fa-arrow-down"></i></th>
+                            <th>Giá <i class="fa-solid fa-arrow-down"></i></th>
+                            <th>Số lượng</th>
+                            <th>Giảm giá</th>
                             <th>Trạng thái</th>
                             <th>Chức năng</th>
                         </tr>
@@ -111,6 +114,9 @@
                     <tbody id="table-categories">
                         <tr>
                             <td>DM001</td>
+                            <td>Quần áo</td>
+                            <td>Quần áo</td>
+                            <td>Quần áo</td>
                             <td>Quần áo</td>
                             <td><span class="status active">● Đang hoạt động</span></td>
                             <td class="actions">
@@ -121,6 +127,9 @@
                         <tr>
                             <td>DM002</td>
                             <td>Kính mắt</td>
+                            <td>Kính mắt</td>
+                            <td>Kính mắt</td>
+                            <td>Kính mắt</td>
                             <td><span class="status inactive">● Ngừng hoạt động</span></td>
                             <td class="actions">
                                 <i class="fa-solid fa-trash-can delete"></i>
@@ -130,7 +139,7 @@
                     </tbody>
                 </table>
 
-                <div class="pagination">
+                <div class="pagination" id="pagination">
                     <button>&larr;</button>
                     <button>1</button>
                     <button>2</button>

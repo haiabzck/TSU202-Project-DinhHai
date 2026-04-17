@@ -2,12 +2,12 @@
 let categories = JSON.parse(localStorage.getItem("categories")); // null
 let formAddProduct = document.getElementById("form-addProduct");
 if (!categories) {
-    categories = [
-        { id:1 ,productCode: "DM001", productName: "Quần Áo", status: "ACTIVE", img: "../img/anh1.png" },
-        { id:2 ,productCode: "DM002", productName: "Kính mắt", status: "ACTIVE", img: "../img/anh2.png" },
-        { id:3 ,productCode: "DM003", productName: "Điện tử", status: "INACTIVE", img: "../img/anh3.png" },
-        { id:4 ,productCode: "DM004", productName: "Hoa quả", status: "ACTIVE", img: "../img/anh4.png" },
-        { id:5 ,productCode: "DM005", productName: "Giày dép", status: "INACTIVE", img: "../img/anh1.png" },
+   categories = [
+        { id:1 ,productCode: "DM001", productName: "Quần Áo", status: "ACTIVE", img: "../img/anh1.png",create_at:""},
+        { id:2 ,productCode: "DM002", productName: "Kính mắt", status: "ACTIVE", img: "../img/anh2.png" ,create_at:""},
+        { id:3 ,productCode: "DM003", productName: "Điện tử", status: "INACTIVE", img: "../img/anh3.png" ,create_at:""},
+        { id:4 ,productCode: "DM004", productName: "Hoa quả", status: "ACTIVE", img: "../img/anh4.png" ,create_at:""},
+        { id:5 ,productCode: "DM005", productName: "Giày dép", status: "INACTIVE", img: "../img/anh1.png" ,create_at:""},
     ];
 }
 localStorage.setItem("categories", JSON.stringify(categories));
@@ -219,7 +219,9 @@ formAddProduct.addEventListener("submit", (event) => {
             id: Math.floor(Math.random() * 10000),
             productCode: productCodeInput,
             productName: productNameInput,
-            status: formAddProduct.status.value
+            status: formAddProduct.status.value,
+            image:"",
+            create_at: formatDateTime()
         }
         
         categories.push(newCategory);
@@ -358,5 +360,16 @@ filterSelect.addEventListener('change', function() {
   
 });
 
+function formatDateTime() {
+    const now = new Date();
+    const date = now.getDate().toString().padStart(2, '0');
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const year = now.getFullYear();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const second = now.getSeconds().toString().padStart(2, '0');
+    
+    return `${year}-${month}-${date}T${hours}:${minutes}:${second}Z`;
+}
 renderCategories(categories);
 
